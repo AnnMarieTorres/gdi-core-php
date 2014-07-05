@@ -69,28 +69,121 @@
 
         <!-- Downloads -->
         <section>
+            <section>
             <h3>Downloads</h3>
             <ul>
                 <li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
                 <li><a href="http://www.vagrantup.com/downloads.html">Vagrant</a></li>
+                <li><a href="http://www.sublimetext.com/3">SublimeText 3</a> or <a href="https://atom.io/">Atom</a></li>
+                <li><a href="https://www.google.com/chrome/browser/">Chrome</a></li>
+                <li><a href="https://gist.github.com/nickdenardis/4f77925cb477adae145c">Development Extensions</a></li>
             </ul>
-            <h4>Setup</h4>
-            <code>
-                cd ~
-                git clone git@github.com:nickdenardis/gdi-core-php.git
-                cd gdi-core-php
-                vagrant up
-            </code>
+            </section>
+            <section>
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="http://php.net/">PHP.net</a></li>
+                    <li><a href="http://www.phptherightway.com/">PHP The Right Way.</a></li>
+                    <li><a href="https://www.khanacademy.org/">Khan Academy</a></li>
+                    <li><a href="http://www.w3schools.com/PHP/">W3 Schools</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Setup</h3>
+                <pre><code class="bash">
+cd ~
+git clone git@github.com:nickdenardis/gdi-core-php.git
+cd gdi-core-php/lessons
+vagrant up
+open http://10.10.10.10/
+                </code></pre>
+            </section>
         </section>
 
         <section>
-            <h3>Resources</h3>
-            <ul>
-                <li><a href="http://www.phptherightway.com/">PHP The Right Way</a></li>
+            <h3>PHP</h3>
+            <p>PHP is a popular general-purpose scripting language that is especially suited to web development.</p>
+            <p>“PHP: Hypertext Preprocessor”</p>
+            <p>Server-side language</p>
+        </section>
 
+        <section>
+            <h3>What can it do?</h3>
+            <ul>
+                <li>Dynamic generation of web-page content<li>
+                <li>Database interaction<li>
+                <li>Processing of user supplied data<li>
+                <li>Email<li>
+                <li>File handling<li>
+                <li>Text/Image processing<li>
+                <li>Network interaction<li>
+                <li>And more…<li>
             </ul>
         </section>
 
+        <section>
+            <h3>Use case</h3>
+            <p><a href="http://10.10.10.10/class1/practice/" target="_blank"><img src="images/class1-practice-example.png" alt="Class 1 Example"/></a></p>
+        </section>
+
+        <section>
+            <h3>How to begin</h3>
+            <ol>
+                <li>Rename index.html -> index.php</li>
+                <li>Add a PHP Block to the top<br />
+                <pre><code class="php">
+&#x3C;?php
+
+?&#x3E;
+&#x3C;!DOCTYPE html&#x3E;
+...</code></pre>
+                </li>
+            </ol>
+            <li><a href="http://10.10.10.10/class1/practice/index.php" target="_blank">Visit the new page</a></li>
+        </section>
+
+        <section>
+            <h3>Displaying text</h3>
+                 <pre><code class="php">
+ &#x3C;?php
+    echo 'Text to display';
+    print 'More text';
+ ?&#x3E;
+ &#x3C;!DOCTYPE html&#x3E;
+...</code></pre>
+        </section>
+
+        <section>
+            <h3>Comments</h3>
+             <pre><code class="php">
+ &#x3C;?php
+    // This is a single line comment
+    echo 'Text to display';
+
+    /* This is a comment
+     that is spread over
+     multiple lines. */
+    print 'More text';
+ ?&#x3E;
+ &#x3C;!DOCTYPE html&#x3E;
+ ...</code></pre>
+        </section>
+
+        <section>
+            <h2>Escaping Characters</h2>
+            <pre><code class="php">
+&#x3C;?php
+/*  Use the backslash (\) to tell PHP
+    to 'ignore' (not interpret) the next character */
+
+echo 'It's time to party!'; // Error
+
+echo 'It\'s time to party!'; // Correct
+
+?&#x3E;
+&#x3C;!DOCTYPE html&#x3E;
+...</code></pre>
+        </section>
     </div>
 
 </div>
