@@ -1,6 +1,29 @@
-<?php
+<p><?php
+function viewWoman($name, $url, $years_lived, $image_url, $biography)
+{
+    return '<article class="woman">
+            <h3><a href="' . $url . '">' . $name . '</a></h3>
+            <h4>' . $years_lived . '</h4>
+            <img src="' . $image_url . '" alt="' . $name . '" />
+            <p>' . $biography . '</p>
+          </article>';
+}
 
+
+    $array = array(
+        "foo" => "bar",
+        "bar" => "foo",
+    );
+
+    // as of PHP 5.4
+    $array = [
+        "foo" => "bar",
+        "bar" => "foo",
+    ];
+
+    var_dump($array);
 ?>
+</p>
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,26 +58,20 @@
         <a class="jump up" href="#">&igrave;</a>
         <a class="jump down" href="#organizations">&iacute;</a>
         <div class = "wrapper">
-          <article class = "woman">
-            <h3>
-              <a href="http://en.wikipedia.org/wiki/Ada_Lovelace">Ada Lovelace</a>
-            </h3>
+            <?php echo viewWoman('Ada Lovelace',
+                'http://en.wikipedia.org/wiki/Ada_Lovelace',
+                '(1815&ndash;1852)',
+                'images/ada_lovelace.jpg',
+                'An analyst of Charles Babbage\'s analytical engine and is often
+                          described as the "first computer programmer."'); ?>
 
-            <h4>(1815&ndash;1852)</h4>
-            <img src="images/ada_lovelace.jpg" alt="Ada Lovelace" />
-            <p>An analyst of Charles Babbage's analytical engine and is often
-              described as the "first computer programmer."</p>
-          </article>
-          <article class = "woman">
-            <h3>
-              <a href="http://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</a>
-            </h3>
-            <h4>(1906&ndash;1992)</h4>
-            <img src="images/grace_hopper.jpg" alt ="Grace Hopper" />
-            <p>A United States Navy officer and the first programmer of the
-              Harvard Mark I, known as the "Mother of COBOL". She developed the
-              first ever compiler for an electronic computer, known as A-0.</p>
-          </article>
+    <?php echo viewWoman('Grace Hopper',
+                        'http://en.wikipedia.org/wiki/Grace_Hopper',
+                        '(1906&ndash;1992)',
+                        'images/grace_hopper.jpg',
+                        'A United States Navy officer and the first programmer of the
+                          Harvard Mark I, known as the "Mother of COBOL". She developed the
+                          first ever compiler for an electronic computer, known as A-0.'); ?>
           <article class = "woman">
             <h3>
               <a href="http://en.wikipedia.org/wiki/Frances_E._Allen">Frances Allen</a>
