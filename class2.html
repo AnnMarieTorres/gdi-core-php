@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Class 2 ~ Intro to PHP &amp; MySQL ~ Girl Develop It</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="Girl Develop It">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="reveal/css/reveal.css">
+    <link rel="stylesheet" href="reveal/css/theme/gdidefault.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <!-- light editor<link rel="stylesheet" href="lib/css/light.css">-->
+    <!-- dark editor--><link rel="stylesheet" href="reveal/lib/css/dark.css">
+
+    <!-- For the slides -->
+    <link rel="stylesheet" href="css/slides.css">
+    <!-- If use the PDF print sheet so students can print slides-->
+
+    <link rel="stylesheet" href="reveal/css/print/pdf.css" type="text/css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+    <section class="" data-id="d52d3211857f61923eba8fa32d8f5fe4">
+        <h2>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nickdenardis/images/506144/gdi_logo_badge.png">
+        <br>
+</h2>
+<h2>Intro to PHP and MySQL</h2>
+            <h4>Class 2</h4>
+    </section>
+    <section class="stack" data-id="a43ccc84fcf11a1be78e15610a98790f">
+        <section class="" data-id="984ab1ca078dafc76de2a5803113dfc1">
+            <h2>Review</h2>
+<div>
+            <ul>
+<li>&lt;?php and .php files</li>
+<li>Printing to screen</li>
+<li>Variables</li>
+<li>Types</li>
+<li>Constants</li>
+<li>Arithmetic</li>
+<li>Conditionals</li>
+<li>Arrays</li>
+<li>Includes</li>
+<li>Loops</li>
+<li>Templating</li>
+</ul>
+        </div>
+    </section>
+    <section class="" data-id="f281ddc3691c8e1835363284c566d6b2">
+        <h2>Our creation</h2>
+<div>Looks exactly the same but less repeated code<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nickdenardis/images/506121/Screen_Shot_2014-07-06_at_3.48.06_PM.png" style="font-size: 30.342435836791992px; font-style: normal; font-variant: normal;">
+</div>
+    </section>
+</section>
+<section class="stack" data-id="97ddb707664688ea03cd0d88d481f73b">
+    <section class="" data-id="6d8d72ffcfcd850165b4b08ba3a3d198">
+        <h2>Functions</h2>
+<div style="text-align: center;">Reusable pieces of code</div>
+<div style="text-align: center;">
+        <br>
+    </div>
+<div style="text-align: center;">
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nickdenardis/images/506121/Screen_Shot_2014-07-06_at_3.48.06_PM.png">
+    <br>
+</div>
+</section>
+<section class="" data-id="ae7b5453ca4a67be88617e6c11e3a2f2">
+    <h2>Current code</h2>
+<div>index.php</div>
+<div>
+<pre><code> &lt;article class="woman"&gt;
+  &lt;h3&gt;
+    &lt;a href="http://en.wikipedia.org/wiki/Ada_Lovelace"&gt;Ada Lovelace&lt;/a&gt;
+  &lt;/h3&gt;
+
+  &lt;h4&gt;(1815&amp;ndash;1852)&lt;/h4&gt;
+  &lt;img src="images/ada_lovelace.jpg" alt="Ada Lovelace" /&gt;
+  &lt;p&gt;An analyst of Charles Babbage's analytical engine and is often
+    described as the "first computer programmer."&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;article class="woman"&gt;
+  &lt;h3&gt;
+    &lt;a href="http://en.wikipedia.org/wiki/Grace_Hopper"&gt;Grace Hopper&lt;/a&gt;
+  &lt;/h3&gt;
+  &lt;h4&gt;(1906&amp;ndash;1992)&lt;/h4&gt;
+  &lt;img src="images/grace_hopper.jpg" alt ="Grace Hopper" /&gt;
+  &lt;p&gt;A United States Navy officer and the first programmer of the
+    Harvard Mark I, known as the "Mother of COBOL". She developed the
+    first ever compiler for an electronic computer, known as A-0.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+</div>Notice the same structure just repeated?<br>
+</section>
+<section class="" data-id="eba0dd1518ffd3e9b768d23df13bfada">
+    <h2>Turn the pattern into a function</h2>
+<div>
+    <br>
+</div>
+<div>index.php</div>
+<div>
+<pre><code>
+&lt;section id="famous"&gt;
+  &lt;a name="famous"&gt;&lt;/a&gt;
+  &lt;h2&gt;Famous Women&lt;/h2&gt;
+  &lt;a class="jump up" href="#"&gt;&amp;igrave;&lt;/a&gt;
+  &lt;a class="jump down" href="#organizations"&gt;&amp;iacute;&lt;/a&gt;
+  &lt;div class = "wrapper"&gt;
+
+    &lt;?php echo viewWoman('Ada Lovelace',
+                        'http://en.wikipedia.org/wiki/Ada_Lovelace',
+                        '(1815&amp;ndash;1852)',
+                        'images/ada_lovelace.jpg',
+                        'An analyst of Charles Babbage\'s analytical engine and is often
+                          described as the "first computer programmer."'); ?&gt;
+
+    &lt;?php echo viewWoman('Grace Hopper',
+                        'http://en.wikipedia.org/wiki/Grace_Hopper',
+                        '(1906&amp;ndash;1992)',
+                        'images/grace_hopper.jpg',
+                        'A United States Navy officer and the first programmer of the
+                          Harvard Mark I, known as the "Mother of COBOL". She developed the
+                          first ever compiler for an electronic computer, known as A-0.'); ?&gt;
+  &lt;/div&gt;
+&lt;/section&gt;<br>
+</code></pre>
+</div>
+<br>
+</section>
+<section class="" data-id="43bea9a75eb7ff37c6da2e9a7f03a43f">
+    <h2>Defining the function</h2>
+<div>
+    <br>
+</div>
+<div>functions.php</div>
+<div>
+<pre><code> &lt;?php
+function viewWoman($name, $url, $years_lived, $image_url, $biography)
+{
+    return '&lt;article class="woman"&gt;
+            &lt;h3&gt;&lt;a href="' . $url . '"&gt;' . $name . '&lt;/a&gt;&lt;/h3&gt;
+            &lt;h4&gt;' . $years_lived . '&lt;/h4&gt;
+            &lt;img src="' . $image_url . '" alt="' . $name . '" /&gt;
+            &lt;p&gt;' . $biography . '&lt;/p&gt;
+          &lt;/article&gt;';
+}
+</code></pre>
+</div>
+<br>
+</section>
+</section>
+<section class="stack" data-id="79a85956e3c6e88f8a5c0b60879eeefb">
+    <section class="" data-id="03ff56081178c3e099ace491f8a6af13">
+        <h2>Useful functions</h2>
+<div>
+        <br>
+    </div>
+<div>
+<div>explode</div>
+<div>implode</div>
+<div>trim</div>
+<div>str_replace</div>
+<div>htmlentities</div>
+<div>filter_input</div>
+</div>
+<div>
+<div>func_get_args</div>
+<div>glob</div>
+<div>
+    <br>
+</div>
+<div>
+<br>
+</div>
+</div>
+<div>
+<br>
+</div>
+</section>
+<section class="" data-id="ebaf70b0a86fa82561f9f5ca863789a3">
+    <h2>Arguments</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>&lt;?php
+
+$class = 'Girl Develop It';
+
+function WhereAmI($class){
+  return 'I am in the ' . $class . ' class.';
+}
+
+echo WhereAmI($class); // I am in the Girl Develop It class.
+
+echo WhereAmI('Math'); // <span>I am in the Math class.
+</span><span>
+echo WhereAmI(); // Error</span></code></pre>
+</div>
+<pre><code>&lt;?php
+<span style="font-family: monospace; font-size: 16.2548770904541px; font-style: normal; font-variant: normal;">function WhereAmI($class, $location = 'Detroit'){
+  $using = 'a computer;
+
+  return 'I am in the ' . $class . ' class in ' . $location . ', using ' . $using . '.';
+}
+
+</span><span style="font-family: monospace; font-size: 16.2548770904541px; font-style: normal; font-variant: normal;">echo WhereAmI($class); // I am in the Girl Develop It class in Detroit, using a computer.</span>
+</code></pre>
+<br>
+</section>
+<section class="" data-id="711d26eefb404a7a15023256bd7213a5">
+    <h2>Variable scope</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code> &lt;?php
+
+$global_variable = 'Some data';
+
+function MyFunction($argument1, $argument2) {
+  $local_variable = $argument1 + $argument2;
+
+  return $local_variable;
+}
+</code></pre>
+</div>
+<br>
+</section>
+</section>
+<section class="" data-id="ad15ef47358dd556f29b804588ef0a4a">
+    <h2>Let's try it</h2>
+<div>
+    <br>
+</div>
+<div>
+<div style="font-size: 30.342435836791992px; font-style: normal; font-variant: normal;">There seems to be a lot of repeated code in the site.</div>
+<div style="font-size: 30.342435836791992px; font-style: normal; font-variant: normal;">
+<br>
+</div>
+<div style="font-size: 30.342435836791992px; font-style: normal; font-variant: normal;">
+<br>
+</div>
+<div style="font-size: 30.342435836791992px; font-style: normal; font-variant: normal;">
+<br>
+</div>
+<h3 style="font-style: normal; font-variant: normal;">Task:</h3>
+<div style="font-size: 30.342435836791992px; font-style: normal; font-variant: normal;">
+<br>
+</div>
+<div style="font-size: 30.342435836791992px; font-style: normal; font-variant: normal;">Can you find this duplicate code and remove it?</div>
+</div>
+</section>
+<section class="" data-id="1bc0d59632ff867777386421ed28b0fd">
+    <h2>Superglobals</h2>
+<div>
+    <br>
+</div>
+<div>
+<div>$GLOBALS</div>
+<div>$_SERVER</div>
+<div>$_GET</div>
+<div>$_POST</div>
+<div>$_FILES</div>
+<div>$_COOKIE</div>
+<div>$_SESSION</div>
+<div>$_REQUEST</div>
+<div>$_ENV</div>
+</div>
+<div>
+<br>
+</div>
+<div>
+<br>
+</div>
+<div>
+<font style="font-size: 18px;">Manual: <a href="http://php.net/manual/en/language.variables.superglobals.php">http://php.net/manual/en/language.variables.superglobals.php</a>
+</font>
+<br>
+</div>
+</section>
+<section class="stack" data-id="779849116a6c32ac844b24f107046850">
+    <section class="" data-id="026ef1371e5764ae0400fba0c14e9ba9">
+        <h2>Classes &amp; Objects</h2>
+<div>
+        <br>
+    </div>
+<div>Reusable and extendable representations of things.</div>
+<div>
+    <br>
+</div>
+<div>
+<br>
+</div>
+<div>Conceptually, a class represents an object, with associated methods and variables<br>
+</div>
+<div>
+<br>
+</div>
+<div>
+<br>
+</div>
+<div>
+<font style="font-size: 18px;">Manual:&nbsp;<a href="http://php.net/manual/en/book.classobj.php">http://php.net/manual/en/book.classobj.php</a>
+</font>
+</div>
+</section>
+<section class="" data-id="195ea0743204762eaf5984950812211d">
+    <h2>Functions vs Classes</h2>
+<div>
+    <br>
+</div>
+<div>function:&nbsp;</div>
+<div>
+<pre><code>function my_func($arg1,$arg2) {
+  &lt;&lt; function statements &gt;&gt;
+  return $value;
+}
+</code></pre>
+</div>Reusable &amp; local scope<div>
+<br>
+</div>
+<div>class:</div>
+<div>
+<pre><code>&lt;?php
+class Dog {
+  public $name;
+
+  public function bark() {
+    echo 'Woof!';}
+  }
+} <font color="#eeeeee" face="Open Sans, sans-serif"><span style="font-size: 30.342435836791992px; white-space: normal;">
+</span></font></code></pre>
+</div>Single attribute, '$name'. Can perform the action of barking.<br>
+</section>
+<section class="" data-id="fd402bc3bca5e20fb918fc013735a9eb">
+    <h2>Using classes</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>&lt;?php
+require_once(‘dog.class.php’);
+
+$puppy = new dog();
+$puppy-&gt;name = 'Rover';
+
+echo "{$puppy-&gt;name} says ";
+$puppy-&gt;bark();
+</code></pre>
+</div>
+<br>
+</section>
+<section class="" data-id="340a8a4d056620acb5a6cffc1be25b82">
+    <h2>Inheritance</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>&lt;?php
+
+class Poodle extends Dog {
+  public $type
+
+  public function set_type($height)
+  {
+    if ( $height &lt; 10 )
+    {
+      $this-&gt;type = ‘Toy’;
+    }
+    elseif ( $height &gt; 15 )
+    {
+      $this-&gt;type = ‘Standard’;
+    }
+    else
+    {
+      $this-&gt;type = ‘Miniature’;
+    }
+  }
+}
+</code></pre>
+</div>
+<br>
+</section>
+<section class="" data-id="0364c132acc197609bf4612ba3fad2b6">
+    <h2>Example</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>&lt;?php
+
+$puppy = new poodle(‘Oscar’);
+
+$puppy-&gt;set_type(12); // 12 inches high!
+
+echo “Poodle is called {$puppy-&gt;name}, ”;
+
+echo “of type {$puppy-&gt;type}, saying “;
+
+echo $puppy-&gt;bark();
+
+…
+</code></pre>
+</div>
+<br>
+</section>
+<section class="" data-id="79e428e66171161d59a4fd8594bba71e">
+    <h2>Extending the example</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>&lt;?php
+
+class Poodle extends Dog {
+  ...
+
+  public function bark() {
+    echo ‘Yip!’;
+  }
+}<br>
+</code></pre>
+</div>
+<br>
+<div>
+    <div>"Poodle is called Oscar,&nbsp;<span>of type Standard, saying Yip!"</span>
+</div>
+</div>
+</section>
+<section class="" data-id="c9334bb78e4b65251bab41898dd51aa4">
+    <h2>Deleting objects</h2>
+    <div>
+        <br>
+    </div>
+    <div>Objects will not be deleted until the script has completed.</div>
+    <div>
+        <br>
+    </div>
+    <div>It is possible to delete the objects, like any other variable, using the 'unset()' function.</div>
+    <div>
+        <br>
+    </div>
+    <div>
+<pre><code>&lt;?php
+
+unset($<span>puppy</span><span style="font-family: monospace;">);</span></code><code>
+?&gt;</code>    </pre>
+</div>
+<br>
+</section>
+</section>
+<section class="stack" data-id="c39756d858a11e9fa206485c5187e042">
+    <section class="" data-id="3c47511d72e1be6ae211b25928ac4b35">
+        <h2>Namespaces</h2>
+<div>
+        <br>
+    </div>
+<div>
+<pre><code>&lt;?php
+
+// Some class included with a framework
+class File {
+  ...
+}
+
+
+// Your local file class
+class File {
+  ...
+}
+
+$myFile = new File; // Problem</code></pre>
+</div>
+<br>
+</section>
+<section class="" data-id="63c93ae83e34d76467a774792bfa27e3">
+    <h2>Namespace</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code> &lt;?php
+
+// Some class included with a framework
+class File {
+  ...
+}
+
+
+// Your local file class
+namespace Acme;
+
+class File {
+  ...
+}
+
+$myFile = new Acme\File; // Your local File class
+
+$theirFile = new \File; // The framework File class</code></pre>
+</div>
+<br>
+</section>
+</section>
+<section class="" data-id="83ef94f0f9c89734b632db6951cfc72c">
+    <h2 style="font-style: normal; font-variant: normal;">Why use objects?</h2>
+    <h2>
+        <div style="font-size: 30px; font-style: normal; font-variant: normal;">
+            <br>
+        </div>
+        <div style="font-size: 30px; font-style: normal; font-variant: normal;">
+            <ol style="font-weight: normal;">
+                <li>Easier to maintain<br>Logical grouping of functions</li>
+                <li>Extending code is easier</li>
+                <li>Packaging functionality for re-use is possible</li>
+            </ol>
+        </div>
+        <div style="font-size: 30px; font-style: normal; font-variant: normal;">
+            <span style="font-weight: normal;">
+                <br>
+            </span>
+        </div>
+        <div style="font-size: 30px; font-style: normal; font-variant: normal;">
+            <span style="font-weight: normal;">
+                <br>
+            </span>
+        </div>
+        <div style="font-size: 30px; font-style: normal; font-variant: normal;">
+            <font style="font-size: 18px; font-weight: normal;">Reference:&nbsp;<a href="http://www.php.net/manual/en/language.oop.php">http://www.php.net/manual/en/language.oop.php</a>
+        </font>
+    </div>
+</h2>
+</section>
+<section class="stack" data-id="544b8a07fdfff6571065c85e79ba6953">
+    <section class="" data-id="e03878fb1f1e9979cbff707d8ec32793">
+        <h2>Error Handling</h2>
+        <div>
+            <br>
+        </div>
+        <div>
+<pre><code>&lt;?php
+
+// Turn off all error reporting
+error_reporting(0);
+
+// Report simple running errors
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+// Reporting E_NOTICE can be good too (to report uninitialized
+// variables or catch variable name misspellings ...)
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+
+// Report all errors except E_NOTICE
+error_reporting(E_ALL ^ E_NOTICE);
+
+// Report ALL PHP errors
+error_reporting(E_ALL);
+?&gt;
+</code>        </pre>
+    </div>
+    <br>
+    <div>Hiding errors is NOT a solution to a problem.&nbsp;<br>
+    </div>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font style="font-size: 18px;">Reference:&nbsp;<a href="http://php.net/manual/en/errorfunc.constants.php">http://php.net/manual/en/errorfunc.constants.php</a>
+    </font>
+</div>
+</section>
+<section class="" data-id="e3a1b9b82f24c2e6a7505bc9e299cfca">
+    <h2>Error suppression</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+<pre><code>&lt;?php
+
+/* Intentional file error */
+$my_file = @file ('non_existent_file') or
+    die ("Failed opening file: error was '$php_errormsg'");
+
+
+</code>    </pre>
+</div>
+<br>
+<div>Halting<span style="font-size: 30px; font-style: normal; font-variant: normal;">&nbsp;the script is NOT a solution to a problem.&nbsp;</span>
+<br>
+</div>
+<div>
+    <span style="font-size: 30px; font-style: normal; font-variant: normal;">
+        <br>
+    </span>
+</div>
+<div>
+    <font style="font-size: 18px;">
+        <span style="font-style: normal; font-variant: normal;">Reference:&nbsp;</span>
+        <a href="http://php.net/manual/en/language.operators.errorcontrol.php">http://php.net/manual/en/language.operators.errorcontrol.php</a>
+    </font>
+</div>
+</section>
+<section class="" data-id="892cf24fdad4dbddfbc05af320bd65f2">
+    <h2>Exceptions</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>&lt;?php
+
+try {
+
+    if ( ($fp = @fopen($filename, "r")) == false)
+    {
+        throw new Exception;
+    }
+
+
+    do_file_stuff($fp);
+
+} catch (Exception $e) {
+
+    handle_exception();
+}
+
+</code></pre>
+</div>
+<br>
+<div>
+    <font style="font-size: 18px;">Manual:&nbsp;<a href="http://php.net/manual/en/language.exceptions.php">http://php.net/manual/en/language.exceptions.php</a>
+</font>
+</div>
+</section>
+<section class="" data-id="02f09b07f65cfca7fab79be279d8514b">
+    <h2>Exception class</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+<pre><code>&lt;?php
+Exception {
+
+  /* Properties */
+  protected string $message ;
+  protected int $code ;
+  protected string $file ;
+  protected int $line ;
+
+  /* Methods */
+  public __construct ([ string $message = "" [, int $code = 0 [, Exception $previous = NULL ]]] )
+  public string getMessage ( void )
+  public Exception getPrevious ( void )
+  public mixed getCode ( void )
+  public string getFile ( void )
+  public int getLine ( void )
+  public array getTrace ( void )
+  public string getTraceAsString ( void )
+  public string __toString ( void )
+  private void __clone ( void )
+}
+</code>    </pre>
+</div>
+<br>
+</section>
+</section>
+<section class="stack" data-id="87123368e578f7918896f37e4fe9f195">
+    <section class="" data-id="71c58c370797cc7d5f851fb898fec539">
+        <h2>Forms</h2>
+        <div>
+            <br>
+        </div>
+        <div>
+            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nickdenardis/images/517506/Screen_Shot_2014-07-14_at_3.00.08_PM.png">
+            <br>
+        </div>
+    </section>
+    <section class="" data-id="f674de736b128ed5d145ccc8b754899f">
+        <h2>RESTful Resources</h2>
+<div>
+        <br>
+    </div>
+<div>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nickdenardis/images/516494/Screen_Shot_2014-07-13_at_1.57.00_PM.png">
+    <br>
+</div>
+<div>
+    <font style="font-size: 18px;">Resource:&nbsp;<a href="http://en.wikipedia.org/wiki/Representational_state_transfer">http://en.wikipedia.org/wiki/Representational_state_transfer</a>
+</font>
+</div>
+</section>
+<section class="" data-id="92763c41c7969c238ad7721bf783c33a">
+    <h2>Form tag</h2>
+<div>
+    <br>
+</div>
+<div>
+<br>
+</div>
+<div>
+<pre><code>&lt;form method="get" action="search.php"&gt;
+  ...
+&lt;/form&gt;</code></pre>
+</div>
+<br>
+<div>
+    <font style="font-size: 18px;">Resource:&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form</a>
+</font>
+</div>
+</section>
+<section class="" data-id="57876beabeab050c73f8b20f7ed245fe">
+    <h2>Input tag</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>&lt;input type="text" name="first_name"&gt;
+
+&lt;textarea name="comment" id="<span style="font-family: monospace; font-size: 17px; font-style: normal; font-variant: normal;">comment</span>" cols="50" rows="4"&gt;
+
+&lt;input type="submit" name="submit" id="submit-button" value="Submit" /&gt;
+</code></pre>
+</div>
+<div>
+<br>
+</div>
+<div>
+<font style="font-size: 18px;">Resource:&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input</a>
+</font>
+</div>
+</section>
+<section class="" data-id="7e87fb83cc24545b06bad4595f322094">
+    <h2>Form flow</h2>
+    <div>
+        <br>
+    </div>
+    <div>Form on page</div>
+    <div>↓<br>
+    </div>
+    <div>User input</div>
+    <div>↓<br>
+    </div>
+    <div>Clean</div>
+    <div>↓<br>
+    </div>
+    <div>Process</div>
+    <div>↓<br>
+    </div>
+    <div>Display results</div>
+</section>
+<section class="" data-id="43b4f57c5b911d45bb67e31034dca154">
+    <h2>Adding search</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>&lt;?php
+// Do search
+if ( isset($_GET['q']) )
+{
+  $results = DoSearch($_GET['q']);
+}</code></pre>
+</div>
+<div>...</div>
+<div>
+<pre><code>...
+&lt;form method="get" action="search.php"&gt;
+  &lt;label for="q"&gt;Search&lt;/label&gt;
+  &lt;input type="input" name="q" id="q" value="" /&gt;
+  &lt;input type="submit" value="Search" /&gt;
+&lt;/form&gt;
+</code></pre>
+</div>...<br>
+<div>
+<pre><code>&lt;section class="results"&gt;
+&lt;?php
+  echo '&lt;p&gt;Results for: ' . $_GET['q'] . '&lt;/p&gt;';
+  foreach ( $results as $result )
+  {
+    ViewResult($result);
+  }
+?&gt;</code></pre>
+</div>
+<br>
+</section>
+<section class="" data-id="7ab883bc0b56e0f96e816e8e7e40261f">
+    <h2>Avoiding XSS</h2>
+<div>
+    <br>
+    </div>
+<div>What about the following search term?</div>
+<div>
+<a href="http://10.10.10.10/class2/practice/search.php?q=%3Cscript%3Ealert(%27Xss%27);%3C/script%3E">http://10.10.10.10/class2/practice/search.php?q=%3Cscript%3Ealert(%27Xss%27);%3C/script%3E</a>
+    <br>
+</div>
+<div>
+    <br>
+</div>
+<div>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nickdenardis/images/516671/Screen_Shot_2014-07-13_at_9.11.26_PM.png">
+<br>
+</div>
+</section>
+<section class="" data-id="4dbcc2fa4a1fe2139b5fb5ce2df7963e">
+    <h2>filter_input()</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>&lt;?php
+
+$search_term = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_SPECIAL_CHARS);
+
+?&gt;</code></pre>
+</div>
+<br>
+<div>echo $_GET['q']</div>
+<div>
+<pre><code>&lt;script&gt;alert('Xss');&lt;/script&gt;</code></pre>
+</div>
+<div>
+    <br>
+</div>
+<div>echo $search_term</div>
+<div>
+<pre><code>&amp;#60;script&amp;#62;alert(&amp;#39;Xss&amp;#39;);&amp;#60;/script&amp;#62;</code></pre>
+</div>
+<div>
+    <br>
+</div>
+</section>
+<section class="" data-id="e8c9c5f65217fd2262c941841b3da94c">
+    <h2>Search an array</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+<pre><code>&lt;?php
+
+// If trying to search
+if ( isset($_GET['q']) )
+{
+    $search_term = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    if ( is_array($women) )
+    {
+      foreach ($women as $woman)
+      {
+          if ( stristr($women['name'], $search_term) )
+          {
+            $results[] = $women;
+          }
+      }
+    }
+}
+</code>    </pre>
+</div>
+<br>
+</section>
+<section class="" data-id="73f47d58f54cdfa6aecae4a2d761f1bd">
+    <h2>Display the results</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+<pre><code>&lt;?php if ( isset($search_term) ) { ?&gt;
+  &lt;section class="results"&gt;
+    &lt;p&gt;Results for: &lt;?php echo $search_term; ?&gt;&lt;/p&gt;
+
+    &lt;?php
+      foreach ($results as $woman)
+      {
+        echo viewWoman($woman['name'], $woman['link'], $woman['years'], $woman['image'], $woman['biography']);
+       }
+     ?&gt;
+  &lt;/section&gt;
+&lt;?php } ?&gt;<br></code>    </pre>
+</div>
+<br>
+</section>
+</section>
+<section class="stack" data-id="2062cb2c170380322d985e2bf9b980fb">
+    <section class="" data-id="6b25d6cab8609d3323893608a84d2453">
+        <h2>Validation</h2>
+        <div>
+            <br>
+        </div>
+        <div>
+            <br>
+        </div>
+        <div>
+<pre><code>&lt;?php
+
+$clean = array();
+
+if (ctype_alnum($_POST['username']))
+{
+  $clean['username'] = $_POST['username'];
+}
+</code>        </pre>
+    </div>
+    <div>
+        <br>
+    </div>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font style="font-size: 18px;">Reference:&nbsp;<a href="http://php.net/manual/en/book.ctype.php">http://php.net/manual/en/book.ctype.php</a>
+    </font>
+</div>
+</section>
+<section class="" data-id="be33fbda01dbc710556da5937fc176ac">
+    <h2>ctype functions</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <div>
+            <ul>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_alnum — Check for alphanumeric character(s)</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_alpha — Check for alphabetic character(s)</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_cntrl — Check for control character(s)</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_digit — Check for numeric character(s)</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_graph — Check for any printable character(s) except space</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_lower — Check for lowercase character(s)</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_print — Check for printable character(s)</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_punct — Check for any printable character which is not whitespace or an alphanumeric character</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_space — Check for whitespace character(s)</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_upper — Check for uppercase character(s)</span>
+                    <br>
+                </li>
+                <li>
+                    <span style="font-size: 24px; text-align: center;">ctype_xdigit — Check for character(s) representing a hexadecimal digit</span>
+                    <br>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+</section>
+<section class="" data-id="2a4591bc8a8bc423eba400ef428a2d34">
+    <h2>Scenario:</h2>
+<div>Someone want to suggest a women in tech</div>
+<div>
+    <br>
+</div>
+<div>
+<br>
+</div>
+<h3>Task:</h3>
+<div>Add a suggestion form to the website that&nbsp;</div>
+</section>
+</div>
+
+
+</div>
+
+
+</div>
+
+<script src="reveal/lib/js/head.min.js"></script>
+<script src="reveal/js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
