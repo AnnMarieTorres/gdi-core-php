@@ -14,9 +14,9 @@ if ( isset($_GET['q']) )
     {
       foreach ($women as $woman)
       {
-          if ( stristr($women['name'], $search_term) )
+          if ( stristr($woman['name'], $search_term) )
           {
-            $results[] = $women;
+            $results[] = $woman;
           }
       }
     }
