@@ -6,7 +6,7 @@ include_once 'includes/women.php';
 $results = array();
 
 // If trying to search
-if ( isset($_GET['q']) )
+if ( isset($_GET['q']) && ctype_alnum($_GET['q']) )
 {
     $search_term = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_SPECIAL_CHARS);
 
