@@ -1,4 +1,5 @@
 <?php
+$search_term = '';
     if (isset($_GET['q']))
     {
         $search_term = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -13,14 +14,14 @@
             <h2>Search Women</h2>
             <a class="jump up" href="#">&igrave;</a>
 
-            <form method="get" action="search.php">
+            <form method="post" action="search.php">
                 <label for="q">Search</label>
                 <input type="input" name="q" id="q" value="" />
-                <input type="submit" value="Search" />
+                <input type="submit" name="submit" value="Search" />
             </form>
         </section>
         <section class="results">
-            <?php echo $_GET['q']; ?>
+            <?php echo $search_term; ?>
         </section>
     </div>
 

@@ -1,30 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Women in Computing</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href='http://fonts.googleapis.com/css?family=Audiowide|Quicksand:300,400,700|Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet" type="text/css" href="stylesheets/reset.css" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/styles.css" charset="utf-8"/>
-  </head>
-  <body>
-    <header>
-      <h1>Women in Computing</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="#famous">Famous Women</a>
-          </li>
-          <li>
-            <a href="#organizations">Organizations</a>
-          </li>
-          <li>
-            <a href="#facts">Fun Facts</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+<?php
+  include_once 'includes/women.php';
+  include_once 'includes/functions.php';
+  include_once 'includes/header.php';
 
+  $sky = 'blue';
+?>
     <div id="main">
       <section id="famous">
         <a name="famous"></a>
@@ -32,62 +12,15 @@
         <a class="jump up" href="#">&igrave;</a>
         <a class="jump down" href="#organizations">&iacute;</a>
         <div class = "wrapper">
-          <article class = "woman">
-            <h3>
-              <a href="http://en.wikipedia.org/wiki/Ada_Lovelace">Ada Lovelace</a>
-            </h3>
 
-            <h4>(1815&ndash;1852)</h4>
-            <img src="images/ada_lovelace.jpg" alt="Ada Lovelace" />
-            <p>An analyst of Charles Babbage's analytical engine and is often
-              described as the "first computer programmer."</p>
-          </article>
-          <article class = "woman">
-            <h3>
-              <a href="http://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</a>
-            </h3>
-            <h4>(1906&ndash;1992)</h4>
-            <img src="images/grace_hopper.jpg" alt ="Grace Hopper" />
-            <p>A United States Navy officer and the first programmer of the
-              Harvard Mark I, known as the "Mother of COBOL". She developed the
-              first ever compiler for an electronic computer, known as A-0.</p>
-          </article>
-          <article class = "woman">
-            <h3>
-              <a href="http://en.wikipedia.org/wiki/Frances_E._Allen">Frances Allen</a>
-            </h3>
-            <h4>(1932&ndash;)</h4>
-            <img src="images/frances_allen.jpg" alt="Frances Allen" />
-            <p>The first female IBM Fellow in 1989. In 2006 she became the first
-              female recipient of the ACM's Turing Award.</p>
-          </article>
-          <article class="break woman">
-            <h3>
-              <a href="http://en.wikipedia.org/wiki/Barbara_Liskov">Barbara Liskov</a>
-            </h3>
-            <h4>(1939&ndash;)</h4>
-            <img src="images/barbara_liskov.png" alt="Barbara Liskov" />
-            <p>Developed the Liskov substitution principle. Liskov was also the
-              winner of the Turing Prize in 2008.</p>
-          </article>
-          <article class = "woman">
-            <h3>
-              <a href="http://en.wikipedia.org/wiki/Anita_Borg">Anita Borg</a>
-            </h3>
-            <h4>(1949&ndash;2003)</h4>
-            <img src="images/anita_borg.jpg" alt="Anita Borg" />
-            <p>The founding director of the Institute for Women and Technology
-              (IWT)</p>
-          </article>
-          <article class = "woman">
-            <h3>
-              <a href="http://en.wikipedia.org/wiki/Maria_Klawe">Maria Klawe</a>
-            </h3>
-            <h4>(1951&ndash;)</h4>
-            <img src="images/maria_klawe.jpg" alt="Maria Klawe" />
-            <p>The first woman to become President of Harvey Mudd College since
-              its founding in 1955 and was ACM president from 2002 until 2004.</p>
-          </article>
+          <?php
+          foreach ($women as $woman)
+          {
+            viewWoman($woman['name'], $woman['link'], $woman['years'], $woman['image'], $woman['biography']);
+          }
+
+          ?>
+
         </div>
       </section>
 
